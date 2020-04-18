@@ -8,10 +8,11 @@ class Cart extends Component {
     }
 
     render() {
-        return (
-            <View>
-                <Text>Cart Screen</Text>
-            </View>
+        return ( <
+            View >
+            <
+            Text > Cart < /Text> <
+            /View>
         );
     }
 }
