@@ -6,6 +6,7 @@ import AboutUs from './AboutUsComponent';
 import Coupon from './CouponComponent';
 import Cart from './CartComponent';
 import Help from './HelpComponent';
+console.disableYellowBox = true;
 const HomeNavigator = createStackNavigator({
     Home: { screen: Home }
 }, {
