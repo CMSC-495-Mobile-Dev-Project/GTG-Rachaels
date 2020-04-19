@@ -12,11 +12,11 @@ class Coupon extends Component {
           modalVisible:false,
           userSelected:[],
           data: [
-            {id:1,  name: "Eggs",   image:"https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg",    },
-            {id:2,  name: "Milk",    image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg",      },
-            {id:3,  name: "Bread",       image:"https://americacomesalive.com/i/Wonder-bread.png", } ,
-            {id:4,  name: "Cheese",   image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png",    } ,
-            {id:5,  name: "Potatoes",   image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG",    } ,
+            {id:1,  name: "Eggs",   image:"https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg", price:'$0.10'   },
+            {id:2,  name: "Milk",    image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg",  price:'$0.20'    },
+            {id:3,  name: "Bread",       image:"https://americacomesalive.com/i/Wonder-bread.png", price:'$0.50' } , 
+            {id:4,  name: "Cheese",   image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png",  price:'$0.75'  } ,
+            {id:5,  name: "Potatoes",   image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG", price:'$1.00'   } ,
             
         ]
         };
@@ -42,7 +42,7 @@ class Coupon extends Component {
                   <Image style={styles.image} source={{uri: item.image}}/>
                   <View style={styles.cardContent}>
                     <Text style={styles.name}>{item.name}</Text>
-                    <Text style={styles.count}>{item.count}</Text>
+                    <Text style={styles.price}>{item.price}</Text>
                     <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
                       <Text style={styles.followButtonText}>Add Coupon</Text>  
                     </TouchableOpacity>
@@ -101,7 +101,7 @@ class Coupon extends Component {
         color:"#3399ff",
         fontWeight:'bold'
       },
-      count:{
+      price:{
         fontSize:14,
         flex:1,
         alignSelf:'center',
