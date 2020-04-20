@@ -116,12 +116,12 @@ class Coupon extends Component {
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius:30,
-        backgroundColor: "white",
+        backgroundColor: "#249924",
         borderWidth:1,
-        borderColor:"#dcdcdc",
+        borderColor:"#249924",
       },
       followButtonText:{
-        color: "#dcdcdc",
+        color: "white",
         fontSize:12,
       },
     });  
