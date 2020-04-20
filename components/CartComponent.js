@@ -6,7 +6,7 @@ import { Image, ScrollView, FlatList, View, Text, StyleSheet, Dimensions, Toucha
 
 
 
-var { height } = Dimensions.get('window');
+var {height} = Dimensions.get('window');
 
 
 
@@ -20,7 +20,7 @@ class Cart extends Component {
 
     }
 
-
+    
 
     constructor(props) {
 
@@ -28,25 +28,25 @@ class Cart extends Component {
 
         this.state = {
 
-            modalVisible: false,
+          modalVisible:false,
 
-            userSelected: [],
+          userSelected:[],
 
-            data: [
+          data: [
 
-                { id: 1, name: "Eggs", quantity: 1, image: "https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg", },
+            {id:1,  name: "Eggs", quantity: 1,image:"https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg",    },
 
-                { id: 2, name: "Milk", quantity: 1, image: "https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg", },
+            {id:2,  name: "Milk", quantity: 1, image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg",      },
 
-                { id: 3, name: "Bread", quantity: 1, image: "https://americacomesalive.com/i/Wonder-bread.png", },
+            {id:3,  name: "Bread", quantity: 1, image:"https://americacomesalive.com/i/Wonder-bread.png", } ,
 
-                { id: 4, name: "Cheese", quantity: 1, image: "http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png", },
+            {id:4,  name: "Cheese", quantity: 1, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png",    } ,
 
-                { id: 5, name: "Potatoes", quantity: 1, image: "https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG", },
+            {id:5,  name: "Potatoes", quantity: 1, image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG",    },             
 
-                { id: 6, name: "Cheeese", quantity: 1, image: "http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png", }
+            {id:6,  name: "Cheeese", quantity: 1, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png",    } 
 
-            ]
+          ]
 
         };
 
@@ -54,19 +54,17 @@ class Cart extends Component {
 
     clickEventListener = (item) => {
 
-        Alert.alert('Adjust Quantities', 'Item: ' + item.name,
+        Alert.alert('Adjust Quantities', 'Item: '+ item.name, 
 
-            [{ text: '+1', onPress: () => this.setState({
-                        [item.quantity]: item.quantity++ }) },
+        [{text: '+1', onPress: () => this.setState({[item.quantity]: item.quantity++})},
 
-                { text: '-1', onPress: () => this.setState({
-                        [item.quantity]: item.quantity-- }) },
+        {text: '-1', onPress: () => this.setState({[item.quantity]: item.quantity--})},
 
-                { text: 'Cancel', onPress: () => console.log('cancelled'), style: 'cancel' }
+        {text: 'Cancel', onPress: () => console.log('cancelled'), style: 'cancel'}
 
-            ],
+        ], 
 
-            { cancelable: true });
+        {cancelable: true});
 
     }
 
@@ -78,84 +76,55 @@ class Cart extends Component {
 
         return (
 
-            <
-            View style = { styles.container } >
+            <View style={styles.container}>
 
-            <
-            FlatList
+                <FlatList 
 
-            style = { styles.scrollStyle }
+                style={styles.scrollStyle}
 
-            columnWrapperStyle = { styles.listContainer }
+                columnWrapperStyle={styles.listContainer}
 
-            data = { this.state.data }
+                data={this.state.data}
 
-            keyExtractor = {
-                (item) => {
+                keyExtractor= {(item) => {
 
                     return item.id;
 
-                }
-            }
+                }}
 
-            renderItem = {
-                ({ item }) => {
+                renderItem={({item}) => {
 
-                    return (
+                return (
 
-                        <
-                        TouchableOpacity style = { styles.card }
-                        onPress = {
-                            () => { this.clickEventListener(item) } } >
+                    <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
 
-                        <
-                        Image style = { styles.image }
-                        source = {
-                            { uri: item.image } }
-                        />
+                    <Image style={styles.image} source={{uri: item.image}}/>
 
-                        <
-                        View style = { styles.cardContent } >
+                    <View style={styles.cardContent}>
 
-                        <
-                        Text style = { styles.name } > { item.name } < /Text>
+                        <Text style={styles.name}>{item.name}</Text>
 
-                        <
-                        Text style = { styles.count } > { item.count } < /Text>
+                        <Text style={styles.count}>{item.count}</Text>
 
-                        <
-                        TouchableOpacity style = { styles.followButton }
-                        onPress = {
-                            () => this.clickEventListener(item) } >
+                        <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
 
-                        <
-                        Text style = { styles.followButtonText } > Quantity: { item.quantity } < /Text>  
+                        <Text style={styles.followButtonText}>Quantity: {item.quantity}</Text>  
 
-                        <
-                        /TouchableOpacity>
+                        </TouchableOpacity>
 
-                        <
-                        /View>
+                    </View>
 
-                        <
-                        /TouchableOpacity>
+                    </TouchableOpacity>
 
-                    )
-                }
-            }
-            />                        
+                )}}/>                        
 
-            <
-            FlatList style = { styles.flatStyle } >
+                <FlatList style={styles.flatStyle}>
 
-            <
-            Text > test < /Text> 
+                    <Text>test</Text> 
 
-            <
-            /FlatList>
+                </FlatList>
 
-            <
-            /View> 
+             </View> 
 
         );
 
@@ -171,7 +140,7 @@ const styles = StyleSheet.create({
 
         flex: 1,
 
-        flexDirection: 'row',
+        flexDirection: 'row', 
 
         height: height,
 
@@ -191,7 +160,7 @@ const styles = StyleSheet.create({
 
         backgroundColor: 'white'
 
-    },
+    },    
 
     flatStyle: {
 
@@ -203,45 +172,45 @@ const styles = StyleSheet.create({
 
     },
 
-    contentList: {
+    contentList:{
 
-        flex: 1,
+        flex:1,
 
-    },
+      },
 
-    cardContent: {
+      cardContent: {
 
-        marginLeft: 20,
+        marginLeft:20,
 
-        marginTop: 10
+        marginTop:10
 
-    },
+      },
 
-    image: {
+      image:{
 
-        width: 90,
+        width:90,
 
-        height: 90,
+        height:90,
 
-        borderRadius: 45,
+        borderRadius:45,
 
-        borderWidth: 2,
+        borderWidth:2,
 
-        borderColor: "#ebf0f7"
+        borderColor:"#ebf0f7"
 
-    },
+      },
 
+    
 
-
-    card: {
+      card:{
 
         shadowColor: '#00000021',
 
         shadowOffset: {
 
-            width: 0,
+          width: 0,
 
-            height: 6,
+          height: 6,
 
         },
 
@@ -251,61 +220,61 @@ const styles = StyleSheet.create({
 
         elevation: 12,
 
-
+    
 
         marginLeft: 20,
 
         marginRight: 20,
 
-        marginTop: 20,
+        marginTop:20,
 
-        backgroundColor: "white",
-
-        padding: 10,
-
-        flexDirection: 'row',
-
-        borderRadius: 30,
-
-    },
-
-
-
-    name: {
-
-        fontSize: 18,
-
-        flex: 1,
-
-        alignSelf: 'center',
-
-        color: "#3399ff",
-
-        fontWeight: 'bold'
-
-    },
-
-    count: {
-
-        fontSize: 14,
-
-        flex: 1,
-
-        alignSelf: 'center',
-
-        color: "#6666ff"
-
-    },
-
-    followButton: {
-
-        marginTop: 10,
-
-        height: 35,
-
-        width: 100,
+        backgroundColor:"white",
 
         padding: 10,
+
+        flexDirection:'row',
+
+        borderRadius:30,
+
+      },
+
+    
+
+      name:{
+
+        fontSize:18,
+
+        flex:1,
+
+        alignSelf:'center',
+
+        color:"#3399ff",
+
+        fontWeight:'bold'
+
+      },
+
+      count:{
+
+        fontSize:14,
+
+        flex:1,
+
+        alignSelf:'center',
+
+        color:"#6666ff"
+
+      },
+
+      followButton: {
+
+        marginTop:10,
+
+        height:35,
+
+        width:100,
+
+        padding:10,
 
         flexDirection: 'row',
 
@@ -313,23 +282,23 @@ const styles = StyleSheet.create({
 
         alignItems: 'center',
 
-        borderRadius: 30,
+        borderRadius:30,
 
         backgroundColor: "white",
 
-        borderWidth: 1,
+        borderWidth:1,
 
-        borderColor: "gray",
+        borderColor:"gray",
 
-    },
+      },
 
-    followButtonText: {
+      followButtonText:{
 
         color: "blue",
 
-        fontSize: 12,
+        fontSize:12,
 
-    }
+      }
 
 })
 
@@ -341,23 +310,17 @@ function Cat(props) {
 
     return (
 
-        <
-        View >
+        <View>
 
-        <
-        Image
+            <Image 
 
-        source = { require('../assets/logo.png') }
+                source={require('../assets/logo.png')}
 
-        style = {
-            { width: 200, height: 200 } }
-        />
+                style={{width: 200, height: 200}}/>
 
-        <
-        Text > Quantity: { props.quantity } < /Text>
+            <Text>Quantity: {props.quantity}</Text>
 
-        <
-        /View>    
+        </View>    
 
     );
 
