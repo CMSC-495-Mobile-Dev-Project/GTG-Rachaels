@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image,TouchableHighlight} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import { View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
+
 
 
 class AboutUs extends Component {
- 
-    
+
+
     static navigationOptions = {
         title: 'AboutUs'
     }
 
-  
-    render(){
-   
-        
+
+    render() {
+
+
         return (
-     
-          <View style={styles.container}>
+
+            <View style={styles.container}>
             <Image style={styles.icon} source={require('../assets/logosmall.png')} />
             <Text style={styles.title}>About Us </Text>
             <Text style = { styles.description } > Welcome to Grocery to Go your number one source
@@ -31,7 +31,7 @@ class AboutUs extends Component {
             { "\n" }
              Marilyn McDonald, Rachael Harner 
             </Text> 
-            <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => navigation.navigation('Home', { screen: Home })}>
+            <TouchableHighlight style={[styles.buttonContainer, styles.homeButton]} onPress={() => this.props.navigation.navigate('Home')}>
             <Text style={styles.buttonText}>Return to Shopping</Text>
             </TouchableHighlight>
         </View>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#249924",
     },
     buttonText: {
-        color: "#249924",
+        color: "white",
         fontSize: 20,
     }
 });
