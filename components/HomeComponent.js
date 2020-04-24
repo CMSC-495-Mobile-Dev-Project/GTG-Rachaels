@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList, Dimensions, Alert, ScrollView } from 'react-native';
+
+
 class Home extends Component {
 
+  
     static navigationOptions = {
         title: 'Home'
         
@@ -31,6 +34,8 @@ class Home extends Component {
                 Alert.alert('Message', 'Item clicked. '+item.name);
               }
             render() {
+              
+
                 return (
         
                     <View style={styles.container}>
