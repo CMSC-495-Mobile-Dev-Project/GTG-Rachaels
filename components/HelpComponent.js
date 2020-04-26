@@ -8,8 +8,9 @@ class Help extends Component {
         <View style={styles.container}>
           <Image style={styles.icon} source={require('../assets/support.jpg')} />
           <Text style={styles.title}>Help and Support </Text>
-          <Text style={styles.description}>Bla Bla Bla</Text>
-          <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.clickListener('login')}>
+          <Text style={styles.description}>At Grocery to Go we strive to provide you with the best customer service possible. { "\n" }
+          If you are unable to create your account or have any issues ordering from our site, please email us at help@grocerytogo.com </Text>
+          <TouchableHighlight style={[styles.buttonContainer, styles.homeButton]} onPress={() => this.props.navigation.navigate('Home')}>
             <Text style={styles.buttonText}>Return to Shopping</Text>
           </TouchableHighlight>
         </View>
@@ -50,11 +51,11 @@ class Help extends Component {
       width:250,
       borderRadius:30,
     },
-    loginButton: {
+    homeButton: {
       backgroundColor: "#249924",
     },
     buttonText: {
-      color: "#FFFFFF",
+      color: "white",
       fontSize:20,
     }
   });
