@@ -12,19 +12,57 @@ class Coupon extends Component {
           modalVisible:false,
           userSelected:[],
           data: [
-            {id:1,  name: "Eggs",   image:"https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg", price:'$0.10'   },
-            {id:2,  name: "Milk",    image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg",  price:'$0.20'    },
-            {id:3,  name: "Bread",       image:"https://americacomesalive.com/i/Wonder-bread.png", price:'$0.50' } , 
-            {id:4,  name: "Cheese",   image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png",  price:'$0.75'  } ,
-            {id:5,  name: "Potatoes",   image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG", price:'$1.00'   } ,
-            
+            {id:1,  name: "Eggs",  price: 0.10, image:"https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg",    },
+            {id:2,  name: "Milk", price: 0.20, image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg",      },
+            {id:3,  name: "Bread",  price: 0.50, image:"https://americacomesalive.com/i/Wonder-bread.png", } ,
+            {id:4,  name: "Cheese", price: 0.75, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png",    } ,
+            {id:5,  name: "Potatoes", price: 1.00, image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG",    },             
+                       
         ]
         };
       }
     
       clickEventListener = (item) => {
-        Alert.alert('Message', 'Item clicked. '+item.name);
+        Alert.alert('Add Coupon for', 'Item: '+ item.name, 
+        [{text: 'Add Coupon', onPress: () => this.check_item_present(item)},        
+         {text: 'Cancel', onPress: () => console.log('cancelled'), style: 'cancel'}
+        ], 
+        {cancelable: true});
+    }
+
+    check_item_present=(item)=>{
+      console.log(item.name + item.quantity);
+      if( item.quantity > 1 ){   
+        }
+      else if (item.quantity == 0) {
+        Alert.alert("Item is not in the Cart")
+        console.log(item.quantity);
+      }   
+    }
+    check_item_present=(item)=>{
+      console.log(item.name + item.coupon);
+      if( item.coupon = true ){   
+        }
+      else if (item.coupon = false) {
+        Alert.alert("Item is not in the Cart")
+        console.log(item.coupon);
+      }   
+    }
+
+    calculateTotal=() => {
+      var total = 0;
+      var couponArray = this.state.data;
+      var index = 0;
+      for (index = 0; index < couponArray.length; index++) {
+        total += (couponArray[index].quantity * couponArray[index].price);
       }
+      return total.toFixed(2);
+    }
+    calculateItemTotal=(item) => {
+      var itemTotal = item.coupon - item.price;
+      return itemTotal.toFixed(2);
+    } 
+
     render() {
         return (
 
@@ -44,7 +82,7 @@ class Coupon extends Component {
                     <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.price}>{item.price}</Text>
                     <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
-                      <Text style={styles.followButtonText}>Add Coupon</Text>  
+                    <Text style={styles.followButtonText}>Add Coupon{item.coupon}</Text>  
                     </TouchableOpacity>
                   </View>
                 </TouchableOpacity>
