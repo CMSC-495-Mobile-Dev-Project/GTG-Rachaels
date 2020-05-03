@@ -4,6 +4,7 @@ import Checkout from './CheckoutComponent';
 
 var {height} = Dimensions.get('window');
 
+
 class Cart extends Component {
 
     static navigationOptions = {
@@ -17,20 +18,15 @@ class Cart extends Component {
           userSelected:[],
           data: [
             {id:1,  name: "Eggs", quantity: 1, price: 1.00, image:"https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg"},
-            {id: 2, name: "Eggs Coupon", quantity: 1, price: -0.60, image: "https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg" },
-            {id:3,  name: "Milk", quantity: 0, price: 1.50, image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg"},
-            {id:4,  name: "Milk Coupon",  quantity: 0 , price: -0.75, image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg"},
-            {id:5,  name: "Bread", quantity: 0, price: 1.62, image:"https://americacomesalive.com/i/Wonder-bread.png"} ,
-            {id:6,  name: "Bread Coupon",  quantity: 0 ,  price: -0.55, image:"https://americacomesalive.com/i/Wonder-bread.png"} ,
-            {id:7,  name: "Cheese", quantity: 0, price: 3.50, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png"} ,
-            {id:8,  name: "Cheese Coupon",   quantity: 0 , price:-0.25, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png"} ,
-            {id:9,  name: "Potatoes", quantity: 0, price: 2.50, image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" }, 
-            {id:10,  name: "Potatoes Coupon",  quantity: 0 , price: -0.99, image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" },    
-            {id:11,  name: "Butter", quantity: 0,price: 5.13,    image:"https://bmcontent.affino.com/AcuCustom/Sitename/DAM/162/DD4G6wuXUAAMMVf.png"} ,
-            {id:12,  name: "Corn", quantity: 0, price: 4.75,  image:"http://www.pngall.com/wp-content/uploads/2016/05/Corn-PNG-File.png" } ,
-            {id:13,  name: "Chips", quantity: 0, price: 1.99,   image:"https://i.pinimg.com/736x/84/6d/3e/846d3e71415c22c2238af6b927e6b473.jpg" } ,
-            {id:14,  name: "Soda", quantity: 0, price:  1.22,  image:"http://pics.drugstore.com/prodimg/416899/900.jpg"   } ,
-            {id:15, name: "Pizza", quantity: 0, price:7.99,   image:"http://www.cuginospizzas.com/wp-content/uploads/2016/03/Pepperoni-Pizza-PNG-Image.png"} ,            
+            {id:2,  name: "Milk", quantity: 0, price: 1.50, image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg"},
+            {id:3,  name: "Bread", quantity: 0, price: 1.62, image:"https://americacomesalive.com/i/Wonder-bread.png"} ,
+            {id:4,  name: "Cheese", quantity: 0, price: 3.50, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png"} ,
+            {id:5,  name: "Potatoes", quantity: 0, price: 2.50, image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" }, 
+            {id:6,  name: "Butter", quantity: 0,price: 5.13,    image:"https://bmcontent.affino.com/AcuCustom/Sitename/DAM/162/DD4G6wuXUAAMMVf.png"} ,
+            {id:7,  name: "Corn", quantity: 0, price: 4.75,  image:"http://www.pngall.com/wp-content/uploads/2016/05/Corn-PNG-File.png" } ,
+            {id:8,  name: "Chips", quantity: 0, price: 1.99,   image:"https://i.pinimg.com/736x/84/6d/3e/846d3e71415c22c2238af6b927e6b473.jpg" } ,
+            {id:9,  name: "Soda", quantity: 0, price:  1.22,  image:"http://pics.drugstore.com/prodimg/416899/900.jpg"   } ,
+            {id:10, name: "Pizza", quantity: 0, price:7.99,   image:"http://www.cuginospizzas.com/wp-content/uploads/2016/03/Pepperoni-Pizza-PNG-Image.png"} ,            
             ]
         };
     }
@@ -95,41 +91,42 @@ class Cart extends Component {
 
 
     render() {
-        return (
-            <View style={styles.container}>
-                <FlatList 
-                style={styles.scrollStyle}
-                columnWrapperStyle={styles.listContainer}
-                data={this.state.data}
-                keyExtractor= {(item) => {
-                    return item.id;
-                }}
-                renderItem={({item}) => {
-                return (
-                    <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
-                    <Image style={styles.image} source={{uri: item.image}}/>
-                    <View style={styles.cardContent}>
-                        <Text style={styles.name}>{item.name}</Text>
-                        <Text style={styles.count}>${this.calculateItemTotal(item)}</Text>                        
-                        <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
-                        <Text style={styles.followButtonText}>Quantity: {item.quantity}</Text>  
-                        </TouchableOpacity>                            
-                    </View>
-                    </TouchableOpacity>
-                )}}/>                        
-                <View style={styles.flatStyle}>
-                    <Text></Text>                    
-                    <Text>  Total: ${this.calculateTotal()}</Text>
-                    <TouchableOpacity style={styles.followButton} onPress={() => this.props.navigation.navigate('Checkout')}>
-                    <Text style = {styles.followButtonText}>
-                    Check Out
-                    </Text>
-                    </TouchableOpacity>
-                </View>
-             </View> 
-        );
-    }
+      return (
+          <View style={styles.container}>
+              <FlatList 
+              style={styles.scrollStyle}
+              columnWrapperStyle={styles.listContainer}
+              data={this.state.data}
+              keyExtractor= {(item) => {
+                  return item.id;
+              }}
+              renderItem={({item}) => {
+              return (
+                  <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
+                  <Image style={styles.image} source={{uri: item.image}}/>
+                  <View style={styles.cardContent}>
+                      <Text style={styles.name}>{item.name}</Text>
+                      <Text style={styles.count}>${this.calculateItemTotal(item)}</Text>                        
+                      <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
+                      <Text style={styles.followButtonText}>Quantity: {item.quantity}</Text>  
+                      </TouchableOpacity>                            
+                  </View>
+                  </TouchableOpacity>
+              )}}/>                        
+              <View style={styles.flatStyle}>
+                  <Text></Text>                    
+                  <Text>  Total: ${this.calculateTotal()}</Text>
+                  <TouchableOpacity style={styles.followButton} onPress={() => this.props.navigation.navigate('Checkout')}>
+                  <Text style = {styles.followButtonText}>
+                  Check Out
+                  </Text>
+                  </TouchableOpacity>
+              </View>
+           </View> 
+      );
+  }
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -195,6 +192,10 @@ const styles = StyleSheet.create({
         flex:1,
         alignSelf:'center',
         color:"#6666ff"
+      },
+      copiedText: {
+        marginTop: 10,
+        color: 'red'
       },
       followButton: {
         marginTop:10,
