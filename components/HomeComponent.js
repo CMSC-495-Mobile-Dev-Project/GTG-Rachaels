@@ -31,144 +31,140 @@ class Home extends Component {
     }
 
     clickEventListener = (item) => {
-      Alert.alert('Adjust Quantities', 'Item: ' + item.name, [{ text: 'Add Coupon', onPress: () => this.check_quantities_adding(item) },
-          { text: 'Cancel', onPress: () => console.log('cancelled'), style: 'cancel' }
-      ], { cancelable: true });
-  }
-
-  check_quantities_adding = (item) => {
-      console.log(item.name + item.quantity);
-      if (item.quantity > 0 && item.quantity < 50) {
-          this.setState({
-              [item.quantity]: item.quantity++ });
-      } else if (item.quantity == 1) {
-          Alert.alert("Sorry, you've reached the maximum limit.")
-          console.log(item.quantity);
-
-          //console.log(item.name + item.quantity);
-      }
-      onRemoveItem = id => {
-          this.setState(state => {
-              const data = state.data.filter(item => item.id !== id);
-              console.log(data);
-              return {
-                  data,
-              };
-          });
-      };
-      calculateTotal = () => {
-          var total = 0;
-          var cartArray = this.state.data;
-          var index = 0;
-          for (index = 0; index < cartArray.length; index++) {
-              total += (cartArray[index].quantity * cartArray[index].price);
-          }
-          return total.toFixed(2);
-      }
-      calculateItemTotal = (item) => {
-          var itemTotal = item.quantity * item.price;
-          return itemTotal.toFixed(2);
-      }
+        Alert.alert('Add Coupon for', 'Item: ' + item.name, [{ text: 'Add Coupon', onPress: () => this.check_item_present(item) },
+            { text: 'Cancel', onPress: () => console.log('cancelled'), style: 'cancel' }
+        ], { cancelable: true });
     }
-    
+
+    check_item_present = (item) => {
+        console.log(item.name + item.quantity);
+        if (item.quantity > 1) {} else if (item.quantity == 0) {
+            Alert.alert("Item is not in the Cart")
+            console.log(item.quantity);
+        }
+    }
+    check_item_present = (item) => {
+        console.log(item.name + item.coupon);
+        if (item.coupon = true) {} else if (item.coupon = false) {
+            Alert.alert("Item is not in the Cart")
+            console.log(item.coupon);
+        }
+    }
+
+    calculateTotal=() => {
+        var total = 0;
+        var cartArray = this.state.data;
+        var index = 0;
+        for (index = 0; index < cartArray.length; index++) {
+          total += (cartArray[index].quantity * cartArray[index].price);
+        }
+        return total.toFixed(2);
+      }
+      calculateItemTotal=(item) => {
+        var itemTotal = item.quantity * item.price;
+        return itemTotal.toFixed(2);
+      }
+  
+  
     render() {
-      return (
+        return (
 
-          <View style={styles.container}>
-          <FlatList 
-            style={styles.contentList}
-            columnWrapperStyle={styles.listContainer}
-            data={this.state.data}
-            keyExtractor= {(item) => {
-              return item.id;
-            }}
-            renderItem={({item}) => {
-            return (
-              <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
-                <Image style={styles.image} source={{uri: item.image}}/>
-                <View style={styles.cardContent}>
-                  <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.count}>{item.count}</Text>
-                  <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
-                    <Text style={styles.followButtonText}>Add to Cart</Text>  
-                  </TouchableOpacity>
-                </View>
-              </TouchableOpacity>
-            )}}/>
-        </View>
-      );
+            <View style={styles.container}>
+            <FlatList 
+              style={styles.contentList}
+              columnWrapperStyle={styles.listContainer}
+              data={this.state.data}
+              keyExtractor= {(item) => {
+                return item.id;
+              }}
+              renderItem={({item}) => {
+              return (
+                <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
+                  <Image style={styles.image} source={{uri: item.image}}/>
+                  <View style={styles.cardContent}>
+                    <Text style={styles.name}>{item.name}</Text>
+                    <Text style = { styles.price }> ${ item.price.toFixed(2) } </Text>
+                    <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
+                      <Text style={styles.followButtonText}>Add to Cart</Text>  
+                    </TouchableOpacity>
+                  </View>
+                </TouchableOpacity>
+              )}}/>
+          </View>
+        );
+      }
     }
-  }
+
 const styles = StyleSheet.create({
-  container: {
-      flex: 1,
-      marginTop: 20,
-      backgroundColor: "#ebf0f7"
-  },
-  contentList: {
-      flex: 1,
-  },
-  cardContent: {
-      marginLeft: 20,
-      marginTop: 10
-  },
-  image: {
-      width: 90,
-      height: 90,
-      borderRadius: 45,
-      borderWidth: 2,
-      borderColor: "#ebf0f7"
-  },
+    container: {
+        flex: 1,
+        marginTop: 20,
+        backgroundColor: "#ebf0f7"
+    },
+    contentList: {
+        flex: 1,
+    },
+    cardContent: {
+        marginLeft: 20,
+        marginTop: 10
+    },
+    image: {
+        width: 90,
+        height: 90,
+        borderRadius: 45,
+        borderWidth: 2,
+        borderColor: "#ebf0f7"
+    },
 
-  card: {
-      shadowColor: '#00000021',
-      shadowOffset: {
-          width: 0,
-          height: 6,
-      },
-      shadowOpacity: 0.37,
-      shadowRadius: 7.49,
-      elevation: 12,
+    card: {
+        shadowColor: '#00000021',
+        shadowOffset: {
+            width: 0,
+            height: 6,
+        },
+        shadowOpacity: 0.37,
+        shadowRadius: 7.49,
+        elevation: 12,
 
-      marginLeft: 20,
-      marginRight: 20,
-      marginTop: 20,
-      backgroundColor: "white",
-      padding: 10,
-      flexDirection: 'row',
-      borderRadius: 30,
-  },
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 20,
+        backgroundColor: "white",
+        padding: 10,
+        flexDirection: 'row',
+        borderRadius: 30,
+    },
 
-  name: {
-      fontSize: 18,
-      flex: 1,
-      alignSelf: 'center',
-      color: "#3399ff",
-      fontWeight: 'bold'
-  },
-  price: {
-      fontSize: 14,
-      flex: 1,
-      alignSelf: 'center',
-      color: "#6666ff"
-  },
-  followButton: {
-      marginTop: 10,
-      height: 35,
-      width: 100,
-      padding: 10,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 30,
-      backgroundColor: "#249924",
-      borderWidth: 1,
-      borderColor: "#249924",
-  },
-  followButtonText: {
-      color: "white",
-      fontSize: 12,
-  },
+    name: {
+        fontSize: 18,
+        flex: 1,
+        alignSelf: 'center',
+        color: "#3399ff",
+        fontWeight: 'bold'
+    },
+    price: {
+        fontSize: 14,
+        flex: 1,
+        alignSelf: 'center',
+        color: "#3399ff"
+    },
+    followButton: {
+        marginTop: 10,
+        height: 35,
+        width: 100,
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 30,
+        backgroundColor: "#249924",
+        borderWidth: 1,
+        borderColor: "#249924",
+    },
+    followButtonText: {
+        color: "white",
+        fontSize: 12,
+    },
 });
 
 
