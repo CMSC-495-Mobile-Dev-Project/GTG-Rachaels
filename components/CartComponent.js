@@ -18,15 +18,21 @@ class Cart extends Component {
           userSelected:[],
           data: [
             {id:1,  name: "Eggs", quantity: 1, price: 1.00, image:"https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg"},
-            {id:2,  name: "Milk", quantity: 0, price: 1.50, image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg"},
-            {id:3,  name: "Bread", quantity: 0, price: 1.62, image:"https://americacomesalive.com/i/Wonder-bread.png"} ,
-            {id:4,  name: "Cheese", quantity: 0, price: 3.50, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png"} ,
-            {id:5,  name: "Potatoes", quantity: 0, price: 2.50, image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" }, 
-            {id:6,  name: "Butter", quantity: 0,price: 5.13,    image:"https://bmcontent.affino.com/AcuCustom/Sitename/DAM/162/DD4G6wuXUAAMMVf.png"} ,
-            {id:7,  name: "Corn", quantity: 0, price: 4.75,  image:"http://www.pngall.com/wp-content/uploads/2016/05/Corn-PNG-File.png" } ,
-            {id:8,  name: "Chips", quantity: 0, price: 1.99,   image:"https://i.pinimg.com/736x/84/6d/3e/846d3e71415c22c2238af6b927e6b473.jpg" } ,
-            {id:9,  name: "Soda", quantity: 0, price:  1.22,  image:"http://pics.drugstore.com/prodimg/416899/900.jpg"   } ,
-            {id:10, name: "Pizza", quantity: 0, price:7.99,   image:"http://www.cuginospizzas.com/wp-content/uploads/2016/03/Pepperoni-Pizza-PNG-Image.png"} ,            
+            {id:2,  name: "Milk", quantity: 1, price: 1.50, image:"https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg"},
+            {id:3,  name: "Bread", quantity: 1, price: 1.62, image:"https://americacomesalive.com/i/Wonder-bread.png"} ,
+            {id:4,  name: "Cheese", quantity: 1, price: 3.50, image:"http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png"} ,
+            {id:5,  name: "Potatoes", quantity: 1, price: 2.50, image:"https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" }, 
+            {id:6,  name: "Butter", quantity: 1,price: 5.13,    image:"https://bmcontent.affino.com/AcuCustom/Sitename/DAM/162/DD4G6wuXUAAMMVf.png"} ,
+            {id:7,  name: "Corn", quantity: 1, price: 4.75,  image:"http://www.pngall.com/wp-content/uploads/2016/05/Corn-PNG-File.png" } ,
+            {id:8,  name: "Chips", quantity: 1, price: 1.99,   image:"https://i.pinimg.com/736x/84/6d/3e/846d3e71415c22c2238af6b927e6b473.jpg" } ,
+            {id:9,  name: "Soda", quantity: 1, price:  1.22,  image:"http://pics.drugstore.com/prodimg/416899/900.jpg"   } ,
+            {id:10, name: "Pizza", quantity: 1, price:7.99,   image:"http://www.cuginospizzas.com/wp-content/uploads/2016/03/Pepperoni-Pizza-PNG-Image.png"} , 
+            { id: 11, name: "Eggs Coupon", quantity: 1, price: -0.50, image: "https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg" },
+            { id: 12, name: "Milk Coupon", quantity: 1, price: -0.55, image: "https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg" },
+            { id: 13, name: "Bread Coupon", quantity: 1, price: -0.65, image: "https://americacomesalive.com/i/Wonder-bread.png" },
+            { id: 14, name: "Cheese Coupon", quantity: 1,  price: -0.75, image: "http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png" },
+            { id: 15, name: "Potatoes Coupon", quantity: 1, price: -0.99, image: "https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" },
+           
             ]
         };
     }
