@@ -12,11 +12,11 @@ class Coupon extends Component {
             modalVisible: false,
             userSelected: [],
             data: [
-                { id: 1, name: "Eggs", price: 1.00, image: "https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg" },
-                { id: 2, name: "Milk", price: 1.50, image: "https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg" },
-                { id: 3, name: "Bread", price: 1.62, image: "https://americacomesalive.com/i/Wonder-bread.png" },
-                { id: 4, name: "Cheese", price: 3.50, image: "http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png" },
-                { id: 5, name: "Potatoes", price: 2.50, image: "https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" },
+                { id: 1, name: "Eggs Coupon", quantity: 1, price: -0.50, image: "https://www.incnow.com/wp-content/uploads/2013/03/egg-carton.jpg" },
+                { id: 2, name: "Milk Coupon", quantity: 1, price: -0.55, image: "https://shepherdminiatures.com/wp-content/uploads/2018/02/milk-red-small-copy.jpg" },
+                { id: 3, name: "Bread Coupon", quantity: 1, price: -0.65, image: "https://americacomesalive.com/i/Wonder-bread.png" },
+                { id: 4, name: "Cheese Coupon", quantity: 1,  price: -0.75, image: "http://www.diningchicago.com/blog/wp-content/uploads/2012/10/Kraft-cheese.png" },
+                { id: 5, name: "Potatoes Coupon", quantity: 1, price: -0.99, image: "https://www.agric.wa.gov.au/sites/gateway/files/W07_0018_White_star_potato.JPG" },
 
             ]
         };
@@ -43,19 +43,21 @@ class Coupon extends Component {
         }
     }
 
-    calculateTotal = () => {
+    ccalculateTotal=() => {
         var total = 0;
-        var couponArray = this.state.data;
+        var cartArray = this.state.data;
         var index = 0;
-        for (index = 0; index < couponArray.length; index++) {
-            total += (couponArray[index].quantity * couponArray[index].price);
+        for (index = 0; index < cartArray.length; index++) {
+          total += (cartArray[index].quantity * cartArray[index].price);
         }
         return total.toFixed(2);
-    }
-    calculateItemTotal = (item) => {
-        var itemTotal = item.Total- item.price;
+      }
+      calculateItemTotal=(item) => {
+        var itemTotal = item.quantity * item.price;
         return itemTotal.toFixed(2);
-    }
+      }
+  
+  
     render() {
         return (
 
